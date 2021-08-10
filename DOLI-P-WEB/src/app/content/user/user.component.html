@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Users
+                    <a href="/user/add" class="btn btn-sm btn-success float-right">Add New User</a>
+                </h4>
+                <div class="table-responsive">
+                    <table id="tblUsers" class="table center-aligned-table">
+                        <thead>
+                            <tr>
+                                <th class="pl-0">S.No.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of userModelList; let ndx = index;">
+                                <td class="pl-0">{{ndx+1}}</td>
+                                <td>{{user.Name}}</td>
+                                <td>{{user.Email}}</td>
+                                <td>
+                                    <a href="/user/update/{{user.UserId}}" title="Edit"
+                                        class="btn btn-sm btn-outline-primary mr-1">
+                                        Edit
+                                    </a>
+                                    <a (click)="confirmUserDelete(user.UserId)" href="javascript:void(0);"
+                                        title="Delete" class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userModelList.length==0">
+                                <td colspan="4">No record found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Popup -->
+<app-confirmation-popup *ngIf="confirmModel.IsShow" [(inputModel)]="confirmModel"
+  (outputIsAccept)="checkConfirmationResponse($event)"></app-confirmation-popup>

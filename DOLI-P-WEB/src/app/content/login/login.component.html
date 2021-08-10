@@ -1,0 +1,71 @@
+<div *ngIf="isForgotpassword==false && isRegister==false" class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                      <h2 class="brand-logo text-center">
+                        DOLI-P
+                      </h2>
+                        <h4>Hello! let's get started</h4>
+                        <h6 class="font-weight-light">Login to continue.</h6>
+                        <form [formGroup]="frmGrp" class="pt-3">
+                            <div class="form-group">
+                                <input [(ngModel)]="loginModel.Username" formControlName="Username"
+                                    [ngClass]="{'is-invalid': frmGrp.get('Username').touched && frmGrp.get('Username').invalid}"
+                                    placeholder="Email Address" maxlength="100" type="text"
+                                    class="form-control form-control-lg">
+                                <label *ngIf="frmGrp.get('Username').touched && frmGrp.get('Username').errors?.required"
+                                    class="text-danger">
+                                    Please fill Email Address
+                                </label>
+                                <label
+                                    *ngIf="(this.frmGrp.get('Username').hasError('email') && frmGrp.get('Username').touched)"
+                                    class="text-danger">
+                                    Invalid Email Address
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="loginModel.Password" formControlName="Password"
+                                    [ngClass]="{'is-invalid': frmGrp.get('Password').touched && frmGrp.get('Password').invalid}"
+                                    placeholder="Password" maxlength="25" type="password"
+                                    class="form-control form-control-lg">
+                                <label *ngIf="frmGrp.get('Password').touched && frmGrp.get('Password').errors?.required"
+                                    class="text-danger">
+                                    Please fill Password
+                                </label>
+                            </div>
+
+                            <div class="mt-3">
+                                <a (click)="submitLoginDetail()" href="javascript:void(0);"
+                                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</a>
+                            </div>
+
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input">
+                                        Remember Me
+                                    </label>
+                                </div>
+                                <a (click)="isForgotpassword=true;" href="javascript:void(0);"
+                                    class="auth-link text-black">Forgot Your Password?</a>
+                            </div>
+
+                            <div class="text-center mt-4 font-weight-light">
+                                Don't have an account?
+                                <a (click)="isRegister=true;" href="javascript:void(0);"
+                                    class="text-primary">Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-forgot-password *ngIf="isForgotpassword"></app-forgot-password>
+
+<app-register *ngIf="isRegister"></app-register>

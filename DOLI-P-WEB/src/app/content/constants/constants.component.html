@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit Constants</h4>
+                <form [formGroup]="frmGrp" class="form-sample">
+                    <p class="card-description">
+                        Edit the constants for your practice.
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">
+                                    <strong>Title</strong>
+                                </label>
+                                <label class="col-sm-6 col-form-label">
+                                    <strong>Value</strong>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">
+                                    Cash Growth Rate (%)
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="constantModel.CashGrowthRate"
+                                        formControlName="CashGrowthRate"
+                                        [ngClass]="{'is-invalid': frmGrp.get('CashGrowthRate').touched && frmGrp.get('CashGrowthRate').invalid}"
+                                        placeholder="0.00" maxlength="6" class="form-control" />
+                                    <label
+                                        *ngIf="frmGrp.get('CashGrowthRate').touched && frmGrp.get('CashGrowthRate').errors?.required"
+                                        class="text-danger">
+                                        Please fill Cash Growth Rate
+                                    </label>
+                                    <label *ngIf="frmGrp.get('CashGrowthRate').errors?.pattern" class="text-danger">
+                                        Please enter valid value
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label pr-0">
+                                    Inflation (%)
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="constantModel.Inflation" formControlName="Inflation"
+                                        [ngClass]="{'is-invalid': frmGrp.get('Inflation').touched && frmGrp.get('Inflation').invalid}"
+                                        placeholder="0.00" maxlength="6" class="form-control" />
+                                    <label
+                                        *ngIf="frmGrp.get('Inflation').touched && frmGrp.get('Inflation').errors?.required"
+                                        class="text-danger">
+                                        Please fill Inflation
+                                    </label>
+                                    <label *ngIf="frmGrp.get('Inflation').errors?.pattern" class="text-danger">
+                                        Please enter valid value
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">
+                                    Mortality Date (age)
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="constantModel.MortalityDate"
+                                        formControlName="MortalityDate"
+                                        [ngClass]="{'is-invalid': frmGrp.get('MortalityDate').touched && frmGrp.get('MortalityDate').invalid}"
+                                        placeholder="0" maxlength="6" class="form-control" />
+                                    <label
+                                        *ngIf="frmGrp.get('MortalityDate').touched && frmGrp.get('MortalityDate').errors?.required"
+                                        class="text-danger">
+                                        Please fill Mortality Date
+                                    </label>
+                                    <label *ngIf="frmGrp.get('MortalityDate').errors?.pattern" class="text-danger">
+                                        Please enter valid value
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">
+                                    Real Estate Growth Rate (%)
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="constantModel.RealEstateGrowthRate"
+                                        formControlName="RealEstateGrowthRate"
+                                        [ngClass]="{'is-invalid': frmGrp.get('RealEstateGrowthRate').touched && frmGrp.get('RealEstateGrowthRate').invalid}"
+                                        placeholder="0.00" maxlength="6" class="form-control" />
+                                    <label
+                                        *ngIf="frmGrp.get('RealEstateGrowthRate').touched && frmGrp.get('RealEstateGrowthRate').errors?.required"
+                                        class="text-danger">
+                                        Please fill Real Estate Growth Rate
+                                    </label>
+                                    <label *ngIf="frmGrp.get('RealEstateGrowthRate').errors?.pattern"
+                                        class="text-danger">
+                                        Please enter valid value
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">
+                                    Support Child Until (age)
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="constantModel.SupportChildUntil"
+                                        formControlName="SupportChildUntil"
+                                        [ngClass]="{'is-invalid': frmGrp.get('SupportChildUntil').touched && frmGrp.get('SupportChildUntil').invalid}"
+                                        placeholder="0" maxlength="6" class="form-control" />
+                                    <label
+                                        *ngIf="frmGrp.get('SupportChildUntil').touched && frmGrp.get('SupportChildUntil').errors?.required"
+                                        class="text-danger">
+                                        Please fill Support Child Until
+                                    </label>
+                                    <label *ngIf="frmGrp.get('SupportChildUntil').errors?.pattern" class="text-danger">
+                                        Please enter valid value
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="/users" class="btn btn-light mr-1">Refresh</a>
+                            <a href="/users" class="btn btn-info">Save Constants</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

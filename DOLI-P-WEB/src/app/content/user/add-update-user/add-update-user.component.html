@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{pageHeading}}</h4>
+
+                <form [formGroup]="frmGrp" class="col-6">
+                    <div class="form-group">
+                        <input [(ngModel)]="userModel.Name" formControlName="Name"
+                            [ngClass]="{'is-invalid': frmGrp.get('Name').touched && frmGrp.get('Name').invalid}"
+                            placeholder="Name" maxlength="100" type="text" class="form-control form-control-lg">
+                        <label *ngIf="frmGrp.get('Name').touched && frmGrp.get('Name').errors?.required"
+                            class="text-danger">
+                            Please fill Name
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <input [(ngModel)]="userModel.Email" formControlName="Email"
+                            [ngClass]="{'is-invalid': frmGrp.get('Email').touched && frmGrp.get('Email').invalid}"
+                            placeholder="Email Address" maxlength="100" type="text"
+                            class="form-control form-control-lg">
+                        <label *ngIf="frmGrp.get('Email').touched && frmGrp.get('Email').errors?.required"
+                            class="text-danger">
+                            Please fill Email Address
+                        </label>
+                        <label *ngIf="(this.frmGrp.get('Email').hasError('email') && frmGrp.get('Email').touched)"
+                            class="text-danger">
+                            Invalid Email Address
+                        </label>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <a class="btn btn-light mr-1" href="/user">Cancel</a>
+                        <a class="btn btn-primary" href="javascript:void(0);" (click)="submitUserDetail()">Submit</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
